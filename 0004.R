@@ -1,4 +1,12 @@
-library(foreach)
+# Author: Emma Bahlke
+# Date: November 2014
+# Solution to Project Euler problem #4:
+# "A palindromic number reads the same both ways.
+# The largest palindrome made from the product of two 2-digit numbers is 9009 = 91 × 99.
+# Find the largest palindrome made from the product of two 3-digit numbers."
+
+# I have generalized my solution so it can find the largest palindrome made from the product
+# of two n-digit numbers.  However, it starts to choke at n = 5.
 
 solve <- function(num.digits) {
    upper.bound <- (10^num.digits) - 1
@@ -8,9 +16,8 @@ solve <- function(num.digits) {
    mat.1 <- matrix(range, length(range), 1)
    mat.2 <- matrix(range, 1, length(range))
    all.multiples <- mat.1 %*% mat.2
-   #remove.duplicates <- get.upper.diag.entries(all.multiples)
   
-  find.largest.palindrome(as.vector(all.multiples))
+   find.largest.palindrome(as.vector(all.multiples))
 }
 
 # vector -> number | FALSE
@@ -30,6 +37,7 @@ is.palindrome <- function(n) {
   return (n == reverse(n))
 }
 
+# reverses a NUMBER, i.e. 37 becomes 73
 reverse <- function(number) {
   vector <- convert.to.vector(number)
   convert.to.number(rev(vector))
@@ -54,16 +62,4 @@ convert.to.number <- function(vector) {
     sum <- sum + ((rev(vector))[i]*(10^(i-1))) # i.e. for the vector (a_0, a_1, ..., a_k),
                                                # run through a_k x 10^0 + ... + a_0 x 10^k
   sum
-}
-
-# m x m matrix -> vector
-# returns the entries of the "upper diagonal" portion of a matrix as a vector
-get.upper.diag.entries <- function(matrix) {
-  to.return <- c()
-  
-  to.return <- unlist(foreach(i=1:nrow(matrix)) %do% matrix[i, i:nrow(matrix)])
-  # using unlist here instead of .combine='c'
-  # because it leads to a fivefold reduction in evaluation time
-  
-  to.return
 }
