@@ -3,6 +3,13 @@
 // What is the 10 001st prime number?
 // Decided to have some fun with sequences here.  Haven't really thought through performance, but it "only" takes 9-10 seconds to
 // get the correct answer for PE007, which is at least semi-reasonable.
+// It's not ideal - I haven't figured out yet how to use sequences to "skip"/continue rather than stopping -
+// the ideal version would be something like:
+// Seq.unfold(fun (primesSoFar, nextNumberToCheck) ->
+//  if not any primesSoFar divide nextNumberToCheck then Some(nextNumberToCheck, (nextNumberToCheck::primesSoFar, nextNumberToCheck+1))
+//  else just continue
+// (for an infinite list - could then be piped into Seq.take n)
+// but unfortunately I can't figure out a way not to stop/yield None in the "else" statement.
 
 module Problem007 =
     let getListOfNPrimes n =
