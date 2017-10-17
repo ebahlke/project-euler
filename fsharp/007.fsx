@@ -10,6 +10,7 @@
 //  else just continue
 // (for an infinite list - could then be piped into Seq.take n)
 // but unfortunately I can't figure out a way not to stop/yield None in the "else" statement.
+// ANSWER TO 10: 142913828923
 
 module Problem007 =
     let getListOfNPrimes n =
@@ -19,6 +20,16 @@ module Problem007 =
             |> Seq.unfold(fun (primesSoFar, nextNumberToCheck) ->
                 if (primesSoFar.Length = n) then None
                 else if not (List.exists (fun p -> nextNumberToCheck%p = 0) primesSoFar) then
-                    Some(nextNumberToCheck::primesSoFar, (nextNumberToCheck::primesSoFar, nextNumberToCheck + 1))
+                    let nextPrimes = nextNumberToCheck::primesSoFar
+                    Some(nextPrimes, (nextPrimes, nextNumberToCheck + 1))
                 else Some(primesSoFar, (primesSoFar, nextNumberToCheck + 1)))
             |> Seq.last
+
+    let isPrime n =
+        let sqrt' = (float >> sqrt >> int) n
+        [ 2 .. sqrt' ]
+        |> List.forall (fun x -> n % x <> 0)
+
+    let getPrimesUpTo n =
+        [1..n]
+        |> List.filter isPrime
