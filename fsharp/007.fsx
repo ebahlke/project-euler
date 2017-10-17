@@ -19,7 +19,7 @@ module Problem007 =
             ([2], 3)
             |> Seq.unfold(fun (primesSoFar, nextNumberToCheck) ->
                 if (primesSoFar.Length = n) then None
-                else if not (List.exists (fun p -> nextNumberToCheck%p = 0) primesSoFar) then
+                else if not (List.exists (fun p -> p*p <= nextNumberToCheck && nextNumberToCheck%p = 0) primesSoFar) then
                     let nextPrimes = nextNumberToCheck::primesSoFar
                     Some(nextPrimes, (nextPrimes, nextNumberToCheck + 1))
                 else Some(primesSoFar, (primesSoFar, nextNumberToCheck + 1)))
