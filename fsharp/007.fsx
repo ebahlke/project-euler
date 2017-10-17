@@ -24,12 +24,3 @@ module Problem007 =
                     Some(nextPrimes, (nextPrimes, nextNumberToCheck + 1))
                 else Some(primesSoFar, (primesSoFar, nextNumberToCheck + 1)))
             |> Seq.last
-
-    let isPrime n =
-        let sqrt' = (float >> sqrt >> int) n
-        [ 2 .. sqrt' ]
-        |> List.forall (fun x -> n % x <> 0)
-
-    let getPrimesUpTo n =
-        [1..n]
-        |> List.filter isPrime
