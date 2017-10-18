@@ -3,10 +3,15 @@
 // Find the sum of all the multiples of 3 or 5 below 1000.
 
 module Problem001 =
-    let isDivisibleByAny divisors number = List.filter (fun x -> number % x = 0) divisors |> List.length > 0
-    let sum_multiples numbers cutoff = List.filter (fun x -> isDivisibleByAny numbers x) [1..cutoff] |> List.fold (fun acc num -> num + acc) 0
+    let isDivisibleByAny divisors number =
+        List.exists (fun x -> number % x = 0) divisors
+        
+    let sumMultiples numbers cutoff =
+        List.filter (fun x -> isDivisibleByAny numbers x) [1..cutoff]
+        |>
+        List.fold (fun acc num -> num + acc) 0
 
-    let result = sum_multiples [3;5] 999
+    let result = sumMultiples [3;5] 999
 
 // Dumb hardcoded version:
 module Problem001Hardcoded =
