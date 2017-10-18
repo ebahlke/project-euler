@@ -1,6 +1,7 @@
 // PROBLEM 7:
 // By listing the first six prime numbers: 2, 3, 5, 7, 11, and 13, we can see that the 6th prime is 13.
 // What is the 10 001st prime number?
+
 // Decided to have some fun with sequences here.  Haven't really thought through performance, but it "only" takes 9-10 seconds to
 // get the correct answer for PE007, which is at least semi-reasonable.  However, there are a lot of inefficiencies with the algorithm.
 // So it's not ideal - I haven't figured out yet how to use sequences to "skip"/continue rather than stopping -
@@ -10,7 +11,6 @@
 //  else just continue
 // (for an infinite list - could then be piped into Seq.take n)
 // but unfortunately I can't figure out a way not to stop/yield None in the "else" statement.
-// ANSWER TO 10: 142913828923
 
 module Problem007 =
     let getListOfNPrimes n =
