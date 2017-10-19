@@ -5,14 +5,14 @@
 module Problem001 =
     let isDivisibleByAny divisors number =
         List.exists (fun x -> number % x = 0) divisors
-        
+
     let sumMultiples numbers cutoff =
         List.filter (fun x -> isDivisibleByAny numbers x) [1..cutoff]
         |>
-        List.fold (fun acc num -> num + acc) 0
+        List.sum
 
     let result = sumMultiples [3;5] 999
 
 // Dumb hardcoded version:
 module Problem001Hardcoded =
-    let result = List.filter (fun x -> x % 3 = 0 || x % 5 = 0) [1..999] |> List.fold (fun acc num -> num + acc) 0
+    let result = List.filter (fun x -> x % 3 = 0 || x % 5 = 0) [1..999] |> List.sum
