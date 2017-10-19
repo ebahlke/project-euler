@@ -11,6 +11,8 @@
 //  else just continue
 // (for an infinite list - could then be piped into Seq.take n)
 // but unfortunately I can't figure out a way not to stop/yield None in the "else" statement.
+// See also my struggles with getting a performant version in problem 003
+// TODO: Find a good, optimized algorithm for generating a list of n primes, or primes up to n, in F#
 
 module Problem007 =
     let getListOfNPrimes n =
