@@ -7,7 +7,7 @@ module Problem001 =
         List.exists (fun x -> number % x = 0) divisors
 
     let sumMultiples numbers cutoff =
-        List.filter (fun x -> isDivisibleByAny numbers x) [1..cutoff]
+        List.filter (isDivisibleByAny numbers) [1..cutoff]
         |>
         List.sum
 
