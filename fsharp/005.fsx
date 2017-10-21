@@ -29,5 +29,6 @@ module Problem005
         List.fold lcm' (bigint(1)) numbers
 
     let rec range (rStart:bigint) (rEnd:bigint) =
+        if rStart > rEnd then raise (System.ArgumentException("rStart must be less than or equal to rEnd"))
         if rStart = rEnd then [rStart]
         else rStart :: (range (rStart+bigint(1)) rEnd)
