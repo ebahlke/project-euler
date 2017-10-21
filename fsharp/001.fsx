@@ -3,10 +3,10 @@
 // Find the sum of all the multiples of 3 or 5 below 1000.
 
 // Closed-form version, October 20th 2017.  Operates in O(1) time.
-// I came up with this through some intuition about how to use the n*(n-1)/2 closed-form expression for the sum of [1...i],
-// and then ad-hoc spot-checking to figure out the exact details of how to adjust the range and content of the sum itself when
-// only trying to sum multiples of a certain number.  I haven't sat down to really think through or mathematically justify
-// why this works - I just know it does.
+// I came up with this through some intuition about how to use the n*(n+1)/2 closed-form expression for the sum of [1...i].
+// For multiples of 3, we're looking not at [1...i] but [3...3*i], which equals 3*[1...i], suggesting 3*i*(i+1)/2.
+// But in order to make the math work out, obviously we need to adjust the value of i down from what it would be for the
+// straight up sum of [1...i] - hence, we define m = i/3.  And that's the constant-time solution.
 module Problem001ClosedForm =
     let sumMultiples n cutoff =
         let m = (cutoff/n)
