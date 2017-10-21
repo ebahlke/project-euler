@@ -8,11 +8,11 @@
 // only trying to sum multiples of a certain number.  I haven't sat down to really think through or mathematically justify
 // why this works - I just know it does.
 module Problem001ClosedForm =
-    let sumMultiplesClosedForm n cutoff =
-        let m = (cutoff/n) + 1
-        (n*m*(m-1))/2
+    let sumMultiples n cutoff =
+        let m = (cutoff/n)
+        (n*m*(m+1))/2
 
-    (sumMultiplesClosedForm 3 999) + (sumMultiplesClosedForm 5 999) - (sumMultiplesClosedForm 15 999)
+    (sumMultiples 3 999) + (sumMultiples 5 999) - (sumMultiples 15 999)
 
 // First version, September 2017:
 module Problem001 =
