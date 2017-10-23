@@ -8,9 +8,9 @@ module Problem017 =
             | 3 -> " hundred"
             | _ -> ""
 
-    let getConnector placeValue =
+    let getConnector placeValue number =
         match placeValue with
-            | 4 -> " and "
+            | 4 -> if ((number/100)%10 <> 0) then " " else " and "
             | 3 -> " and "
             | 2 -> "-"
             | _ -> ""
@@ -56,7 +56,7 @@ module Problem017 =
                 if (n<100) then yield! getPhoneticComponents (n-(n%10))
                 if (n>= 100) then yield! getPhoneticComponents firstDigit
                 yield getPlaceDescriptor lengthN
-                if (remainingDigits <> 0) then yield getConnector lengthN
+                if (remainingDigits <> 0) then yield getConnector lengthN n
                 if (remainingDigits <> 0) then yield! getPhoneticComponents remainingDigits
         }
     let printPhonetically n =
