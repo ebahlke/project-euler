@@ -1,7 +1,7 @@
 // PROBLEM 19:
 // How many Sundays fell on the first of the month during the twentieth century (1 Jan 1901 to 31 Dec 2000)?
 
-// For fun, and because I'm enamoured with Seq.unfold - without DateTimes
+// For fun, and because I'm enamoured with Seq.unfold, done without DateTimes
 
 module Problem019 =
     let isLeapYear n = ((n%100 <> 0) || (n%400 = 0)) && (n%4 = 0)
