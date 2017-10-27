@@ -21,7 +21,6 @@ module Problem017 =
         seq {
             let lengthN = n.ToString().Length
             let firstDigit = n/(pown 10 (lengthN-1))
-            printf "%i" firstDigit
             let remainingDigits = (n - firstDigit * (pown 10 (lengthN-1)))
 
             match n with
